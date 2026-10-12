@@ -1,0 +1,18 @@
+# Optional: a ready-made PostgreSQL for local development.
+#   docker compose up -d
+# Credentials match DATABASE_URL in .env.example.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: finai-db
+    environment:
+      POSTGRES_USER: finai
+      POSTGRES_PASSWORD: finai
+      POSTGRES_DB: finai
+    ports:
+      - "5432:5432"
+    volumes:
+      - finai-data:/var/lib/postgresql/data
+
+volumes:
+  finai-data:
